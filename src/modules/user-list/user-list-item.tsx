@@ -2,7 +2,7 @@ import { FC, useEffect, useRef } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-import { User } from 'modules/hooks/use-user-search';
+import { User } from 'hooks/use-user-search';
 
 const styles = StyleSheet.create({
   itemContainer: {

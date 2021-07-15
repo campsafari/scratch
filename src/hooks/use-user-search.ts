@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios, { CancelTokenSource } from 'axios';
+import { debounce } from 'lodash';
 
 const API_ENDPOINT = 'https://api.github.com/search/users';
 const CANCEL_ERROR_MESSAGE = 'Operation canceled by the user.';
@@ -17,7 +18,7 @@ export default function useUserSearch() {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<Error | undefined>();
 
-  const searchUsers = (query: string) => {
+  const fetchUsers = (query: string) => {
     //always cancel pending requests before executing a new one
     if (cancelTokenSource) {
       cancelTokenSource.cancel(CANCEL_ERROR_MESSAGE);
@@ -34,7 +35,8 @@ export default function useUserSearch() {
 
       //execute the request
       axios
-        .get(`${API_ENDPOINT}?q=${query}`, {
+        .get(API_ENDPOINT, {
+          params: { q: query },
           cancelToken: cancelTokenSource.token,
         })
         .then((res) => {
@@ -49,6 +51,8 @@ export default function useUserSearch() {
         });
     }
   };
+
+  const searchUsers = useCallback(debounce(fetchUsers, 500), []);
 
   //cleanup on unmount
   useEffect(() => {

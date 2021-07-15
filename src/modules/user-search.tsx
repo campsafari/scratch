@@ -1,7 +1,7 @@
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { useEffect, useState } from 'react';
 import UserList from 'modules/user-list/user-list';
-import useUserSearch from 'modules/hooks/use-user-search';
+import useUserSearch from 'hooks/use-user-search';
 import SearchInput from 'modules/search-input';
 
 const styles = StyleSheet.create({

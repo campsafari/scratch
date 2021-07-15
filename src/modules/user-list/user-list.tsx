@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import UserListItem from 'modules/user-list/user-list-item';
 import { StyleSheet, css } from 'aphrodite';
-import { User } from 'modules/hooks/use-user-search';
+import { User } from 'hooks/use-user-search';
 
 const styles = StyleSheet.create({
   list: {

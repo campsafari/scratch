@@ -35,9 +35,9 @@ function App() {
           If you had a full day more to work on this, what would you improve?
         </h3>
         <p>
-          Design. Also using css only to display the search and clear icons
-          instead of rendering images, making it responsive and more suitable
-          for touch devices.
+          I would implement the loading of further api results when the user
+          scrolls to the of the list and making it more suitable for touch
+          devices.
         </p>
         <h3>
           If you would start from scratch now, what would you do differently?
