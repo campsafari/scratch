@@ -1,8 +1,8 @@
 import { StyleSheet, css } from 'aphrodite/no-important';
 import { useEffect, useState } from 'react';
-import UserList from 'modules/user-list/user-list';
+import UserList from 'modules/user-search/user-list/user-list';
+import UserSearchInput from 'modules/user-search/user-search-input';
 import useUserSearch from 'hooks/use-user-search';
-import SearchInput from 'modules/search-input';
 
 const styles = StyleSheet.create({
   container: {
@@ -71,7 +71,7 @@ const UserSearch = () => {
 
   return (
     <div className={css(styles.container)}>
-      <SearchInput
+      <UserSearchInput
         InputProps={{
           value: query,
           onChange: handleOnChange,

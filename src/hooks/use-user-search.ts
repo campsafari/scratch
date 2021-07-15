@@ -34,9 +34,10 @@ export default function useUserSearch() {
       cancelTokenSource = CancelTokenFactory.source();
 
       //execute the request
+      //the user qualifier is set because we want to search for usernames explicitly
       axios
         .get(API_ENDPOINT, {
-          params: { q: query },
+          params: { q: query, type: 'user' },
           cancelToken: cancelTokenSource.token,
         })
         .then((res) => {

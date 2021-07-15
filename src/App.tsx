@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import UserSearch from 'modules/user-search';
+import UserSearch from 'modules/user-search/user-search';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           username parts further up in the tree would also be possible but i
           think it´s the list-item´s concern on how to display the data. So
           maybe there isn´t a better way?. I also don´t like that it´s not
-          responsive and not really usable on touch devices.
+          really usable on touch devices.
         </p>
         <h3>
           If you had a full day more to work on this, what would you improve?
@@ -37,7 +37,7 @@ function App() {
         <p>
           I would implement the loading of further api results when the user
           scrolls to the of the list and making it more suitable for touch
-          devices.
+          devices. Also i would add tests.
         </p>
         <h3>
           If you would start from scratch now, what would you do differently?

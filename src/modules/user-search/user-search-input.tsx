@@ -38,7 +38,7 @@ type Props = {
   onClear: () => void;
 };
 
-const SearchInput: FC<Props> = ({ InputProps, onClear }) => {
+const UserSearchInput: FC<Props> = ({ InputProps, onClear }) => {
   return (
     <div className={css(styles.container)}>
       <img src={searchIcon} className={css(styles.searchIcon)} />
@@ -54,4 +54,4 @@ const SearchInput: FC<Props> = ({ InputProps, onClear }) => {
   );
 };
 
-export default SearchInput;
+export default UserSearchInput;
