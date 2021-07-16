@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+### Thoughts
+For this particular demo i chose aphrodite as a css/styling solution,
+except for the app part that came with create-react-app, because it
+felt simple and straightforward for this small prototype. Of course
+this could have been done in a couple more ways like css modules,
+styled components, a global css stylesheet, css utility classes á la
+tailwind, a ui library like material-ui and whatnot. But this decision
+would be based on the overall application architecture.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+###What do you like about your solution?
+Hmm, well, it´s simple :)
 
-## Available Scripts
+###What do you dislike about your solution?
+I am not sure about the query prop, maybe there is a better way
+without passing it down to the list elements? But i didn´t want to use
+the context api or a state library. Calculating the highlighted
+username parts further up in the tree would also be possible but i
+think it´s the list-item´s concern on how to display the data. So
+maybe there isn´t a better way?. I also don´t like that it´s not
+really usable on touch devices.
 
-In the project directory, you can run:
+###If you had a full day more to work on this, what would you improve?
+I would implement the loading of further api results when the user
+scrolls to the of the list and making it more suitable for touch
+devices. Also i would add tests.
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+###If you would start from scratch now, what would you do differently?
+Tricky question, since i just started from scratch. But maybe trying
+out a different styling solution, using a css library that comes with
+a grid? And if this component would be part of a library i would also
+start building the UI in storybook and also build that list component
+in a more general way instead of strictly coupling it to users. For
+example a list component that provides an api for more general use
+cases. Like this nice FlatList component from ReactNative.

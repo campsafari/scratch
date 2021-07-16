@@ -63,7 +63,7 @@ const UserSearch = () => {
 
   useEffect(() => {
     searchUsers(query);
-  }, [query]);
+  }, [query, searchUsers]);
 
   useEffect(() => {
     setCursor(0);
@@ -81,9 +81,9 @@ const UserSearch = () => {
         onClear={handleClear}
       />
       <div className={css(styles.listContainer)}>
-        {error && <p className={css(styles.errorMessage)}>{error.message}</p>}
         <UserList users={users} cursor={cursor} query={query} />
       </div>
+      {error && <p className={css(styles.errorMessage)}>{error.message}</p>}
     </div>
   );
 };
