@@ -2,6 +2,7 @@ import { StyleSheet, css } from 'aphrodite/no-important';
 import { FC, InputHTMLAttributes } from 'react';
 import searchIcon from 'assets/search_black_24dp.svg';
 import clearIcon from 'assets/clear_black_24dp.svg';
+import spinner from 'assets/spinner.svg';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,13 +20,13 @@ const styles = StyleSheet.create({
       borderColor: '#4976BA',
     },
   },
-  searchIcon: {
+  leftIcon: {
     position: 'absolute',
     left: 8,
     width: 22,
     height: 22,
   },
-  clearIcon: {
+  rightIcon: {
     position: 'absolute',
     right: 8,
     width: 22,
@@ -35,21 +36,24 @@ const styles = StyleSheet.create({
 
 type Props = {
   InputProps: InputHTMLAttributes<HTMLInputElement>;
-  onClear: () => void;
+  onClear?: () => void;
+  loading?: boolean;
 };
 
-const UserSearchInput: FC<Props> = ({ InputProps, onClear }) => {
+const UserSearchInput: FC<Props> = ({ InputProps, onClear, loading }) => {
   return (
     <div className={css(styles.container)}>
-      <img src={searchIcon} className={css(styles.searchIcon)} />
+      <img src={searchIcon} className={css(styles.leftIcon)} />
       <input className={css(styles.input)} type="text" {...InputProps} />
-      {InputProps.value && (
+      {InputProps.value && !loading && (
         <img
           onClick={onClear}
           src={clearIcon}
-          className={css(styles.clearIcon)}
+          className={css(styles.rightIcon)}
         />
       )}
+
+      {loading && <img src={spinner} className={css(styles.rightIcon)} />}
     </div>
   );
 };

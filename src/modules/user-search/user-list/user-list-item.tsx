@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 import { User } from 'hooks/use-user-search';
@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
     fontSize: '13px',
     color: '#222',
     backgroundColor: '#eee',
+    borderRadius: 8,
+    overflow: 'hidden',
   },
   itemFocused: {
     color: '#fefefe',

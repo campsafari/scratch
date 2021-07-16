@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     top: 35,
     width: '100%',
     maxHeight: 200,
-    borderRadius: 8,
     overflowY: 'auto',
     boxSizing: 'border-box',
     backgroundColor: 'white',
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
 const UserSearch = () => {
   const [query, setQuery] = useState('');
   const [cursor, setCursor] = useState(0);
-  const { searchUsers, users, error } = useUserSearch();
+  const { searchUsers, users, error, loading } = useUserSearch();
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //TODO any preconditions that should be met (i.e min query length)
@@ -49,11 +48,6 @@ const UserSearch = () => {
     } else if (e.keyCode === 13) {
       window.open(users[cursor].url, '_blank');
     }
-  };
-
-  const handleOnBlur = () => {
-    setCursor(0);
-    setQuery('');
   };
 
   const handleClear = () => {
@@ -76,9 +70,9 @@ const UserSearch = () => {
           value: query,
           onChange: handleOnChange,
           onKeyDown: handleOnKeyDown,
-          onBlur: handleOnBlur,
         }}
         onClear={handleClear}
+        loading={loading}
       />
       <div className={css(styles.listContainer)}>
         <UserList users={users} cursor={cursor} query={query} />

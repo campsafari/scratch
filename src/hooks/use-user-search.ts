@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import axios, { CancelTokenSource } from 'axios';
-import { debounce } from 'lodash';
+import { throttle } from 'lodash';
 
 const API_ENDPOINT = 'https://api.github.com/search/users';
-const CANCEL_ERROR_MESSAGE = 'Operation canceled by the user.';
+const CANCELED_BY_USER_MESSAGE = 'Operation canceled by the user.';
 const CancelTokenFactory = axios.CancelToken;
 let cancelTokenSource: CancelTokenSource | null;
 
@@ -17,11 +17,12 @@ export type User = {
 export default function useUserSearch() {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<Error | undefined>();
+  const [loading, setLoading] = useState(false);
 
   const fetchUsers = (query: string) => {
     //always cancel pending requests before executing a new one
     if (cancelTokenSource) {
-      cancelTokenSource.cancel(CANCEL_ERROR_MESSAGE);
+      cancelTokenSource.cancel(CANCELED_BY_USER_MESSAGE);
     }
 
     //reset error state
@@ -35,6 +36,7 @@ export default function useUserSearch() {
 
       //execute the request
       //the user qualifier is set because we want to search for usernames explicitly
+      setLoading(true);
       axios
         .get(API_ENDPOINT, {
           params: { q: query, type: 'user' },
@@ -43,23 +45,29 @@ export default function useUserSearch() {
         .then((res) => {
           cancelTokenSource = null;
           setUsers(res?.data?.items || []);
+          setLoading(false);
         })
         .catch((err) => {
           cancelTokenSource = null;
-          if (err.message !== CANCEL_ERROR_MESSAGE) {
+          if (err.message !== CANCELED_BY_USER_MESSAGE) {
             setError(err);
+            setLoading(false);
           }
         });
     }
   };
 
-  const searchUsers = useCallback(debounce(fetchUsers, 500), []);
+  //this could also be debounced instead of just throttled
+  const searchUsers = useCallback(
+    throttle(fetchUsers, 1000, { trailing: true }),
+    []
+  );
 
   //cleanup on unmount
   useEffect(() => {
     return function cleanup() {
       if (cancelTokenSource) {
-        cancelTokenSource.cancel(CANCEL_ERROR_MESSAGE);
+        cancelTokenSource.cancel(CANCELED_BY_USER_MESSAGE);
       }
     };
   }, []);
@@ -68,5 +76,6 @@ export default function useUserSearch() {
     searchUsers,
     users,
     error,
+    loading,
   };
 }
