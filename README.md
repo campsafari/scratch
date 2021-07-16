@@ -28,10 +28,15 @@ But i would get a second opinion on that from my colleagues.
 
 
 ### If you would start from scratch now, what would you do differently?
-Tricky question, since i just started from scratch. But maybe trying
+Tricky question, since i just started from scratch.
+But if the time limit is not applying anymore maybe trying
 out a different styling solution, using a css library that comes with
 a grid? And if this component would be part of a library i would also
 start building the UI in storybook and also build that list component
 in a more general way instead of strictly coupling it to users. For
 example a list component that provides an api for more general use
 cases. Like this nice FlatList component from ReactNative.
+I mean there are a lot of options on how to build it differently but in my opinion
+all of them are somehow dependent on the application/library design that this component
+would be integrated into. Also the use of atomic design principles would be a benefit
+for other components that for example need to render scrollable lists, input fields etc...
