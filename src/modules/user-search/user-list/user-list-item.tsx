@@ -6,7 +6,9 @@ import { User } from 'hooks/use-user-search';
 
 const styles = StyleSheet.create({
   itemContainer: {
-    marginBottom: 2,
+    ':not(:last-child)': {
+      marginBottom: 2,
+    },
   },
   item: {
     display: 'flex',
@@ -16,6 +18,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     borderRadius: 8,
     overflow: 'hidden',
+    ':hover': {
+      color: '#fefefe',
+      backgroundColor: '#4976BA',
+    },
   },
   itemFocused: {
     color: '#fefefe',

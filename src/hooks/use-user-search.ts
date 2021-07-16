@@ -58,10 +58,7 @@ export default function useUserSearch() {
   };
 
   //this could also be debounced instead of just throttled
-  const searchUsers = useCallback(
-    throttle(fetchUsers, 1000, { trailing: true }),
-    []
-  );
+  const searchUsers = useCallback(throttle(fetchUsers, 1000), []);
 
   //cleanup on unmount
   useEffect(() => {

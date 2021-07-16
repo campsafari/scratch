@@ -11,18 +11,16 @@ would be based on the overall application architecture.
 Hmm, well, it´s simple :)
 
 ### What do you dislike about your solution?
-I am not sure about the query prop, maybe there is a better way
-without passing it down to the list elements? But i didn´t want to use
-the context api or a state library. Calculating the highlighted
-username parts further up in the tree would also be possible but i
-think it´s the list-item´s concern on how to display the data. So
-maybe there isn´t a better way?. I also don´t like that it´s not
-really usable on touch devices.
+That it´s not really usable on touch devices. Also the highlighting/focus handling could be improved.
+The highlighting states maybe should be different for mouse and keyboard interactions.
+So only when the user starts using the keyboard we should focus items with keys,
+but once the user starts using a pointer device the keyboard highlighting should be cleared and it should.
 
 ### If you had a full day more to work on this, what would you improve?
-I would implement the loading of further api results when the user
-scrolls to the of the list and making it more suitable for touch
-devices. Also i would add tests.
+- implement the loading of further api results when the user scrolls to the of the list 
+- making it more suitable for touch devices.
+- displaying a message when the API didn´t return any results
+- adding tests
 
 
 ### If you would start from scratch now, what would you do differently?
