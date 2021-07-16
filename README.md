@@ -15,11 +15,15 @@ That it´s not really usable on touch devices. Also the highlighting/focus handl
 The highlighting states maybe should be different for mouse and keyboard interactions.
 So only when the user starts using the keyboard we should focus items with keys,
 but once the user starts using a pointer device the keyboard highlighting should be cleared and it should.
+Also i am not sure about the query prop being passed down to the list-item, the highlighted
+text could be calculated further up in the tree and could even be a part of the list item data itself.
+But i would get a second opinion on that from my colleagues.
 
 ### If you had a full day more to work on this, what would you improve?
 - implement the loading of further api results when the user scrolls to the of the list 
 - making it more suitable for touch devices.
 - displaying a message when the API didn´t return any results
+- checking for render performance and maybe memoizing the highlighted text output
 - adding tests
 
 
